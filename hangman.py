@@ -3,7 +3,8 @@ import os
 import sys
 
 
-words = ['pizza','word','python','test','yellow','down','chair','kitties']
+words = [
+    'pizza', 'word', 'python', 'test', 'yellow', 'down', 'chair', 'kitties']
 
 secret_word = random.choice(words)
 secret_letters = list(secret_word)
@@ -17,6 +18,7 @@ def print_blanks(guess_count):
     print()
     print(blanks)
     print()
+
 
 os.system('clear')
 print_blanks(guess_count)
@@ -41,4 +43,3 @@ while guess_count > 0:
         sys.exit(0)
 
 print('You lose!')
-
