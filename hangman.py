@@ -1,11 +1,11 @@
-import os 
+import os
 import random
 import sys
 
 
 class Hangman:
     def __init__(self, guess_count=10):
-        self.words = ['pizza', 'word', 'python', 'test', 'yellow', 'down', 
+        self.words = ['pizza', 'word', 'python', 'test', 'yellow', 'down',
                       'chair', 'kitties']
         self.secret_word = random.choice(self.words)
         self.blanks = ('_' * len(self.secret_word))
@@ -13,7 +13,6 @@ class Hangman:
 
     def print_blanks(self):
         print('You have {} guesses remaining!'.format(self.guess_count))
-        print(self.secret_word)
         print()
         print(self.blanks)
         print()
@@ -35,7 +34,7 @@ class Hangman:
             while (guess in secret_letters) and (guess not in correct_guesses):
                 # get the index of the guessed letter
                 guess_index = secret_letters.index(guess)
-                # replace the first instance of the guessed letter in the secret
+                # replace the first instance of guessed letter in the secret
                 # word with a dash, so the second instance etc. can be found
                 secret_letters[guess_index] = '-'
                 # add the guessed letter to the row of blanks at the same index
