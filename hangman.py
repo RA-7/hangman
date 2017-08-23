@@ -10,8 +10,12 @@ class Hangman:
         self.secret_word = random.choice(self.words)
         self.blanks = ('_' * len(self.secret_word))
         self.guess_count = guess_count
+        self.guesses = []
 
     def print_blanks(self):
+        if self.guesses:
+            print('Previous guesses: ', end='')
+            print(', '.join(self.guesses))
         print('You have {} guesses remaining!'.format(self.guess_count))
         print()
         print(self.blanks)
@@ -21,7 +25,6 @@ class Hangman:
         os.system('clear')
         self.print_blanks()
         secret_letters = list(self.secret_word)
-        correct_guesses = []
 
         while self.guess_count > 0:
             self.blanks = list(self.blanks)
@@ -33,7 +36,7 @@ class Hangman:
                 guess = input('Guess a letter: ')
             os.system('clear')
 
-            while (guess in secret_letters) and (guess not in correct_guesses):
+            while (guess in secret_letters) and (guess not in self.guesses):
                 # get the index of the guessed letter
                 guess_index = secret_letters.index(guess)
                 # replace the first instance of guessed letter in the secret
@@ -42,7 +45,7 @@ class Hangman:
                 # add the guessed letter to the row of blanks at the same index
                 self.blanks[guess_index] = guess
 
-            correct_guesses += guess
+            self.guesses += guess
             self.guess_count -= 1
             self.blanks = ''.join(self.blanks)
             self.print_blanks()
