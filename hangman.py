@@ -30,7 +30,7 @@ class Hangman:
             self.blanks = list(self.blanks)
             guess = input('Guess a letter: ').lower()
 
-            # make sure the user input is a single letter
+            # make sure the user input is valid (a single letter)
             while not guess.isalpha() or len(guess) > 1:
                 print('Please input a single letter!')
                 guess = input('Guess a letter: ')
